@@ -1,4 +1,4 @@
-# PlantsSwap Factory
+# DefiPlants Factory
 
 In-depth documentation on PancakeSwap is available at [docs.plantsswap.com](https://docs.plantsswap.com/).
 
