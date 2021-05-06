@@ -1,10 +1,10 @@
 pragma solidity =0.5.16;
 
-import './interfaces/IPantherFactory.sol';
-import './PantherPair.sol';
+import './interfaces/IPlantsFactory.sol';
+import './PlantsPair.sol';
 
-contract PantherFactory is IPantherFactory {
-    bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(PantherPair).creationCode));
+contract PlantsFactory is IPlantsFactory {
+    bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(PlantsPair).creationCode));
 
     address public feeTo;
     address public feeToSetter;
@@ -12,27 +12,27 @@ contract PantherFactory is IPantherFactory {
     mapping(address => mapping(address => address)) public getPair;
     address[] public allPairs;
 
-    event PairCreated(address indexed token0, address indexed token1, address pair, uint);
+    event PairCreated(address indexed token0, address indexed token1, address pair, uint256);
 
     constructor(address _feeToSetter) public {
         feeToSetter = _feeToSetter;
     }
 
-    function allPairsLength() external view returns (uint) {
+    function allPairsLength() external view returns (uint256) {
         return allPairs.length;
     }
 
     function createPair(address tokenA, address tokenB) external returns (address pair) {
-        require(tokenA != tokenB, 'Panther: IDENTICAL_ADDRESSES');
+        require(tokenA != tokenB, 'Plants: IDENTICAL_ADDRESSES');
         (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
-        require(token0 != address(0), 'Panther: ZERO_ADDRESS');
-        require(getPair[token0][token1] == address(0), 'Panther: PAIR_EXISTS'); // single check is sufficient
-        bytes memory bytecode = type(PantherPair).creationCode;
+        require(token0 != address(0), 'Plants: ZERO_ADDRESS');
+        require(getPair[token0][token1] == address(0), 'Plants: PAIR_EXISTS'); // single check is sufficient
+        bytes memory bytecode = type(PlantsPair).creationCode;
         bytes32 salt = keccak256(abi.encodePacked(token0, token1));
         assembly {
             pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
-        IPantherPair(pair).initialize(token0, token1);
+        IPlantsPair(pair).initialize(token0, token1);
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);
@@ -40,12 +40,12 @@ contract PantherFactory is IPantherFactory {
     }
 
     function setFeeTo(address _feeTo) external {
-        require(msg.sender == feeToSetter, 'Panther: FORBIDDEN');
+        require(msg.sender == feeToSetter, 'Plants: FORBIDDEN');
         feeTo = _feeTo;
     }
 
     function setFeeToSetter(address _feeToSetter) external {
-        require(msg.sender == feeToSetter, 'Panther: FORBIDDEN');
+        require(msg.sender == feeToSetter, 'Plants: FORBIDDEN');
         feeToSetter = _feeToSetter;
     }
 }

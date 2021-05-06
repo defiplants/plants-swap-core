@@ -1,11 +1,11 @@
 {
-  "name": "@pantherswap-libs/panther-swap-core",
-  "description": "Core contracts for the panther protocol",
+  "name": "@plantsswap-libs/plants-swap-core",
+  "description": "Core contracts for the plants protocol",
   "version": "0.1.0",
-  "homepage": "https://pantherswap.com",
+  "homepage": "https://defiplants.farm",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pantherswap/panther-swap-core.git"
+    "url": "https://github.com/defiplants/plants-swap-core.git"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
