@@ -1,6 +1,6 @@
 # DefiPlants Factory
 
-In-depth documentation on PancakeSwap is available at [docs.plantsswap.com](https://docs.plantsswap.com/).
+In-depth documentation on Defiplants is available at [docs.defiplants.farm](https://docs.defiplants.farm/).
 
 # Local Development
 
