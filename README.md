@@ -11,7 +11,7 @@ The following assumes the use of `node@>=10`.
 
 A new latest node is installed, but this package requires version 10: `$ n 10.16.0`
 
-Type: `$ n` to change npm, then select which version.
+Type: `$ n` to change node version, then select which version to currently use. Repeat `$ n` if you want to go back to previous version of node and choose in the options which version.
 
 ## Install Dependencies
 
