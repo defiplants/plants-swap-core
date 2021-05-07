@@ -1,5 +1,5 @@
 {
-  "name": "@plantsswap-libs/plants-swap-core",
+  "name": "plants-swap-core",
   "description": "Core contracts for the plants protocol",
   "version": "0.1.0",
   "homepage": "https://defiplants.farm",
